@@ -332,6 +332,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
 
         setupViews();
         mPopupDataProvider = new PopupDataProvider(this);
+        LauncherNotifications.getInstance().addListener(mPopupDataProvider);
 
         mAppTransitionManager = LauncherAppTransitionManager.newInstance(this);
 
@@ -919,7 +920,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
             mModel.refreshShortcutsIfRequired();
 
             // Set the notification listener and fetch updated notifications when we resume
-            NotificationListener.setNotificationsChangedListener(mPopupDataProvider);
+            NotificationListener.setNotificationsChangedListener(LauncherNotifications.getInstance());
 
             DiscoveryBounce.showForHomeIfNeeded(this);
 
